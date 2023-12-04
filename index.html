@@ -3,72 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">    
+    <style>
+        body {
+            background: linear-gradient(to right, #2980B9, #6DD5FA);
+            color: rgba(255, 255, 255, 0.8);
+        }
+        .section-bg-blue {
+            background-color: #2980B9;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .section-bg-green {
+            background-color: #2ECC71;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .section-bg-purple {
+            background-color: #9B59B6;
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>   
     <title>Klasifikasi Gangguan Penglihatan</title>
 </head>
 
 <body>
-    <div class="my-header" style="margin-bottom: 10px;">
-        <h1>Klasifikasi Gangguan Penglihatan</h1>
-    </div>
-
-    <div class="versi-nol" style="margin-top: 10px; margin-bottom: 10px;">
-        <h2>Gangguan Penglihatan</h2>
-        <p>
-            Retina berfungsi menerima cahaya yang difokuskan oleh lensa dan mengirimkan sinyal saraf sampai ke otak.
-            Di pusat retina terdapat sebuah area kecil yang memainkan peran penting dalam menajamkan penglihatan untuk lebih detail, yang disebut makula. 
-            Gangguan penglihatan merupakan salah satu masalah kesehatan yang signifikan di seluruh dunia. 
-            Beberapa gangguan penglihatan yang terjadi di makula retina adalah gangguan drusen, Neovaskularisasi koroid (CNV), Edema Makula Diabetik (DME).
-        </p>
-      </div>
-  
-    <div class="column versi-satu" style="margin-top: 10px; margin-bottom: 10px;">
-        <img src='./static/cnv.jpeg' alt="Deskripsi Gambar">
-        <h2 style="margin-right: 10px; text-align: center;">Choroidal Neovascularization (CNV)</h2>
-        <p>
-            Choroidal Neovascularization (CNV) yang dalam bahasa Indonesia Neovaskularisasi Koroid adalah kondisi pada makula dimana terjadi pertumbuhan 
-            pembuluh darah baru yang abnormal di bawah retina. Munculnya pembuluh darah baru ini dapat menyebabkan kerusakan pada jaringan retina yang
-            dapat mempengaruhi penglihatan seseorang. CNV biasanya terjadi pada pasien Age-related macular degeneration (AMD), tetapi tidak menutup
-            kemungkinan juga terjadi pada pasien dengan kondisi mata lainnya seperti miopia degeneratif, uveitis, dan lain-lain.
-        </p>
-    </div>
-              
-    <div class="column versi-dua" style="margin-top: 10px; margin-bottom: 10px;">
-        <h2 style="margin-left: 10px; margin-right: 10px; text-align: center;">Diabetic Macular Edema (DME)</h2>
-        <p>
-            Diabetic Macular Edema (DME) yang dalam bahasa Indonesia Edema Makula Diabetes adalah kondisi yang sebagian besar terjadi pada penderita diabetes 
-            dengan kontrol gula darah yang buruk dan durasi diabetes yang lama yang menyebabkan terjadinya pembengkakan (edema) pada makula. DME adalah salah 
-            satu komplikasi diabetes yang dapat menyebabkan kehilangan penglihatan dan merupakan penyebab utama kebutaan pada orang dewasa di seluruh dunia.
-        </p>
-        <img src="./static/dme.jpeg" alt="Deskripsi Gambar">
-    </div>
-
-    <div class="column versi-satu" style="margin-top: 10px; margin-bottom: 10px;">
-        <img src="./static/drusen.jpeg" alt="Deskripsi Gambar">
-        <h2 style="margin-right: 10px; text-align: center;">Drusen</h2>
-        <p>
-            Drusen adalah penumpukan zat-beku di bawah retina yang terjadi pada degenerasi makula terkait usia (AMD) yang Sebagian besar kemungkinan terjadi 
-            pada orang yang usianya di atas 50 tahun. Kemuncula drusen ditandai dengan bintik-bintik putih atau kuning kecil pada retina. Drusen dapat memicu 
-            pembentukan pembuluh darah baru yang abnormal di bawah retina (neovaskularisasi koroid), yang dapat merusak lapisan retina dan memperburuk penglihatan.
-        </p>
-    </div>
-
-    <form class="form-group text-center" action='/', method="post" enctype="multipart/form-data">
-        <label class="col-sm-2" style="margin-top: 10px; margin-bottom: 10px;">Upload Your Image :</label>
-        <div class="col-sm-5 mx-auto">
-            <input class="form-control" type="file" name="imagefile">
+    <div class="text-center mb-5 sticky-top" style="background: linear-gradient(to left, #3498db, #2980B9);">
+        <h2 class="py-4 fw-bold text-dark">KLASIFIKASI GANGGUAN PENGLIHATAN</h2>
+    </div>  
+    <div class="container my-4">                        
+        <div class="row mb-4 section-bg-blue shadow-lg">
+            <div class="col">
+                <h3 class="text-light fw-bold">Gangguan Penglihatan</h3>
+                <p>
+                    Retina berfungsi menerima cahaya yang difokuskan oleh lensa dan mengirimkan sinyal saraf sampai ke otak.
+                    Di pusat retina terdapat sebuah area kecil yang memainkan peran penting dalam menajamkan penglihatan untuk lebih detail, yang disebut makula. 
+                    Gangguan penglihatan merupakan salah satu masalah kesehatan yang signifikan di seluruh dunia. 
+                    Beberapa gangguan penglihatan yang terjadi di makula retina adalah gangguan drusen, Neovaskularisasi koroid (CNV), Edema Makula Diabetik (DME).
+                </p>
+            </div>
+        </div>
+        
+        <!-- CNV -->
+        <div class="row mb-4 section-bg-green shadow-lg">            
+            <div class="col-md-6 order-2 order-md-2">
+                <img src='./static/cnv.jpeg' alt="Deskripsi Gambar" class="img-fluid">
+            </div>
+            <div class="col-md-6 order-1 order-md-1">
+                <h3 class="my-3 text-center text-light fw-bold">Choroidal Neovascularization (CNV)</h3>
+                <p>
+                    Choroidal Neovascularization (CNV) yang dalam bahasa Indonesia Neovaskularisasi Koroid adalah kondisi pada makula dimana terjadi pertumbuhan pembuluh darah baru yang abnormal di bawah retina. 
+                    Munculnya pembuluh darah baru ini dapat menyebabkan kerusakan pada jaringan retina yang dapat mempengaruhi penglihatan seseorang. 
+                    CNV biasanya terjadi pada pasien Age-related macular degeneration (AMD), tetapi tidak menutup kemungkinan juga terjadi pada pasien dengan kondisi mata lainnya seperti miopia degeneratif, uveitis, dan lain-lain.
+                </p>
+            </div>    
         </div>
 
-        <div class="col-sm-1 mx-auto" style="margin-top: 10px;">
-            <button class="btn btn-danger my-button" type="submit" value="Predict Image">Submit</button>
+        <!-- DME -->
+        <div class="row mb-4 section-bg-purple shadow-lg">            
+            <div class="col-md-6 order-1 order-md-2">
+                <h3 class="my-3 text-center text-light fw-bold">Diabetic Macular Edema (DME)</h3>
+                <p>
+                    Diabetic Macular Edema (DME) yang dalam bahasa Indonesia Edema Makula Diabetes adalah kondisi yang sebagian besar terjadi pada penderita diabetes dengan kontrol gula darah yang buruk dan durasi diabetes yang lama yang menyebabkan terjadinya pembengkakan (edema) pada makula. DME adalah salah satu komplikasi diabetes yang dapat menyebabkan kehilangan penglihatan dan merupakan penyebab utama kebutaan pada orang dewasa di seluruh dunia.
+                </p>
+            </div>            
+            <div class="col-md-6 order-2 order-md-1">
+                <img src="./static/dme.jpeg" alt="Deskripsi Gambar" class="img-fluid">
+            </div>
         </div>
-    </form>
+        
+        <!-- DRUSEN  -->
+        <div class="row mb-4 section-bg-blue shadow-lg">
+            <div class="col-md-6 order-2 order-md-2">
+                <img src="./static/drusen.jpeg" alt="Deskripsi Gambar" class="img-fluid">
+            </div>
+            <div class="col-md-6 order-1 order-md-1">
+                <h3 class="my-3 text-center text-light fw-bold">Drusen</h3>
+                <p>
+                    Drusen adalah penumpukan zat-beku di bawah retina yang terjadi pada degenerasi makula terkait usia (AMD) yang Sebagian besar kemungkinan terjadi pada orang yang usianya di atas 50 tahun. Kemuncula drusen ditandai dengan bintik-bintik putih atau kuning kecil pada retina. Drusen dapat memicu pembentukan pembuluh darah baru yang abnormal di bawah retina (neovaskularisasi koroid), yang dapat merusak lapisan retina dan memperburuk penglihatan.
+                </p>
+            </div>
+        </div>
 
-    {% if pred_class %}
-    <p class="text-center"> The image is classified as: {{ pred_class }}, Accuracy: {{ "{:.2%}".format(pred_prob) }}</p>
-    {% endif %}
+        <form class="row g-3 mb-4 section-bg-green" action='/' method="post" enctype="multipart/form-data">
+            <label class="col-sm-2 text-dark col-form-label">Upload Your Image :</label>
+            <div class="col-sm-5">
+                <input class="form-control" type="file" name="imagefile">
+            </div>
 
+            <div class="col-sm-1">
+                <button class="btn btn-success" type="submit" value="Predict Image">Submit</button>
+            </div>
+        </form>
+
+        {% if pred_class %}
+        <p class="text-center"> The image is classified as: {{ pred_class }}, Accuracy: {{ "{:.2%}".format(pred_prob) }}</p>
+        {% endif %}
+    </div>
 </body>
 </html>
